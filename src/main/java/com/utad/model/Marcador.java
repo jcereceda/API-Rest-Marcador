@@ -19,9 +19,9 @@ public class Marcador {
     @GeneratedValue(strategy = GenerationType.AUTO) // Estrategia a seguir por el id como AutoIncrement
     private int id;
     @Column // Será una columna de la tabla
-    private String equipoLocal;
+    private int equipoLocal;
     @Column
-    private String equipoVisitante;
+    private int equipoVisitante;
     @Column
     private int golesLocal;
     @Column
@@ -42,16 +42,20 @@ public class Marcador {
     private int tirosLocal;
     @Column
     private int tirosVisitante;
-    
+    @Column
+    private int posesionLocal;
+    @Column
+    private int posesionVisitante;
+
     // Constructor por defecto vacio
     public Marcador() {
         golesLocal = 0;
         golesVisitante = 0;
     }
 
-    public Marcador(int id, String equipoLocal, String equipoVisitante, int golesLocal, int golesVisitante,
+    public Marcador(int id, int equipoLocal, int equipoVisitante, int golesLocal, int golesVisitante,
             int amarillasLocal, int amarillasVisitante, int rojasLocal, int rojasVisitante, int cornerLocal,
-            int cornerVisitante, int tirosLocal, int tirosVisitante) {
+            int cornerVisitante, int tirosLocal, int tirosVisitante, int posesionLocal, int posesionVisitante) {
         this.id = id;
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
@@ -65,6 +69,24 @@ public class Marcador {
         this.cornerVisitante = cornerVisitante;
         this.tirosLocal = tirosLocal;
         this.tirosVisitante = tirosVisitante;
+        this.posesionLocal = posesionLocal;
+        this.posesionVisitante = posesionVisitante;
+    }
+
+    public int getPosesionLocal() {
+        return posesionLocal;
+    }
+
+    public void setPosesionLocal(int posesionLocal) {
+        this.posesionLocal = posesionLocal;
+    }
+
+    public int getPosesionVisitante() {
+        return posesionVisitante;
+    }
+
+    public void setPosesionVisitante(int posesionVisitante) {
+        this.posesionVisitante = posesionVisitante;
     }
 
     // Getters y setters
@@ -74,16 +96,16 @@ public class Marcador {
     public void setId(int id) {
         this.id = id;
     }
-    public String getEquipoLocal() {
+    public int getEquipoLocal() {
         return equipoLocal;
     }
-    public void setEquipoLocal(String equipoLocal) {
+    public void setEquipoLocal(int equipoLocal) {
         this.equipoLocal = equipoLocal;
     }
-    public String getEquipoVisitante() {
+    public int getEquipoVisitante() {
         return equipoVisitante;
     }
-    public void setEquipoVisitante(String equipoVisitante) {
+    public void setEquipoVisitante(int equipoVisitante) {
         this.equipoVisitante = equipoVisitante;
     }
     public int getGolesLocal() {

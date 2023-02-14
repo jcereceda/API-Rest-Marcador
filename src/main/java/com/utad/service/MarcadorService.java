@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.utad.model.Marcador;
+import com.utad.model.Equipo;
 import com.utad.repository.ServiceRepository;
+import com.utad.repository.EquiposRepository;
 /**
  * Clase servicio:
  * Siguiendo el MVC el servicio contacta con la BD a traves del repositorio CRUD
@@ -18,7 +20,9 @@ public class MarcadorService{
 
     @Autowired
     private ServiceRepository repository;
-    
+    @Autowired
+    private EquiposRepository equiposRepository;
+
     public List<Marcador> getAllPartidos() {
         List partidos = new ArrayList<Marcador>();
         repository.findAll().forEach(partidos::add);
@@ -31,6 +35,8 @@ public class MarcadorService{
 
     public void savePartido(Marcador marcador) {
         repository.save(marcador);
+        System.out.println(marcador.getEquipoLocal());
+        System.out.println(marcador.getEquipoVisitante());
     }
 
     public void dropPartido(int id) {
@@ -41,4 +47,9 @@ public class MarcadorService{
         repository.save(marcador);
     }
 
+    public List<Equipo> getAllEquipos(){
+        List equipos = new ArrayList<Equipo>();
+        equiposRepository.findAll().forEach(equipos::add);
+        return equipos;
+    }
 }
